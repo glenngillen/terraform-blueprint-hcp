@@ -34,7 +34,7 @@ data "aws_arn" "main" {
 }
 
 resource "aws_vpc_peering_connection_accepter" "main" {
-  vpc_peering_connection_id = hcp_aws_network_peering.example_peering.provider_peering_id
+  vpc_peering_connection_id = hcp_aws_network_peering.example.provider_peering_id
   auto_accept               = true
 }
 
@@ -49,7 +49,7 @@ resource "hcp_aws_network_peering" "example" {
 
 // Create an HVN route that targets your HCP network peering and matches your AWS VPC's CIDR block
 resource "hcp_hvn_route" "example" {
-  hvn_link         = hcp_hvn.hvn.self_link
+  hvn_link         = hcp_hvn.example_hvn.self_link
   hvn_route_id     = "hcp-tf-example-hvn-route"
   destination_cidr = aws_vpc.main.cidr_block
   target_link      = hcp_aws_network_peering.example.self_link
