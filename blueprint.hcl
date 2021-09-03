@@ -7,6 +7,8 @@ blueprint "hcp-stack" {
   inputs = [
     {name = "HCP_CLIENT_ID", label = "HCP Client ID", help = "Generate a [service principal key](https://registry.terraform.io/providers/hashicorp/hcp/latest/docs/guides/auth)"},
     {name = "HCP_CLIENT_SECRET", label = "HCP Client Secret", sensitive=true},
+    {name = "AWS_ACCESS_KEY_ID", label = "AWS Access Key"},
+    {name = "AWS_SECRET_ACCESS_KEY", label = "AWS Secret Key", sensitive=true},    
     {name = "region", label = "AWS Region", values=["us-east-1", "us-west-2"], type="terraform"}
   ]
 }
